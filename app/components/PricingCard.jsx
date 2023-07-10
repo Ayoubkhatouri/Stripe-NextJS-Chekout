@@ -1,6 +1,7 @@
 import axios from "axios"
 import Link from "next/link"
 import {AiFillCheckCircle} from 'react-icons/ai'
+import Stripe from "stripe"
 
 const PricingCard = ({price}) => {
 
@@ -181,9 +182,13 @@ const dynamicDescription = (price) => {
 // POST request 
 const handleSubscription = async (e) => {
     e.preventDefault();
+ 
     const {data}=await axios.post('/api/payment',
     {
-        priceId: price.id
+        priceId: price.id,
+        name:"Customer1",
+        email:"Customer1@gmail.com",
+       
     },
     {
         headers:{
