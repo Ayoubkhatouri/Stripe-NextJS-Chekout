@@ -1,11 +1,12 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
 
-export async function GET(request){
-    const stripe=new Stripe(process.env.STRIPE_SECRET_KEY)
-    const prices=await stripe.prices.list({
-        limit:4,
-    })
+export async function GET(request) {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+  const pattern = /subs/i;
 
-    return NextResponse.json(prices.data.reverse())
+  const pricesResponse = await stripe.prices.list();
+  const subscription = pricesResponse.data.filter(item => pattern.test(item.nickname));
+
+  return NextResponse.json(subscription.reverse());
 }

@@ -2,6 +2,7 @@
 import axios from "axios"
 import { useState,useEffect } from "react"
 import PricingCard from "../components/PricingCard"
+import Stripe from "stripe"
 
 
 const Pricing = () => {
@@ -16,6 +17,8 @@ const Pricing = () => {
         const {data}=await axios.get('/api/getProducts')
         setPrices(data)
         console.log(data)
+    
+   
     }
 
   return (
