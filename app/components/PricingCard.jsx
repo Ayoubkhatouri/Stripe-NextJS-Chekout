@@ -42,7 +42,7 @@ const handleSubscription = async (e) => {
 
           </ul>
           <button className="mt-8 flex w-full justify-center rounded-md border border-transparent bg-[#f1592a] py-2 px-4 text-sm font-medium text-white shadow-sm" onClick={handleSubscription}>
-             Rent This Dumpster
+             Subscribe to this dumpster
           </button>
         </div>
        </div>
